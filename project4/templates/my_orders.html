@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block body%}
+
+    <div id='my_orders_container' class='w-50 mx-auto'>
+      <div class=' text-left pr-3'>
+            <ul >
+                {% for item in compras%}
+                <a href=#><li> Order no: {{item[0]}}&nbsp;&nbsp;&nbsp;&nbsp;Client:{{item[1]}}&nbsp;&nbsp;&nbsp;&nbsp;Total:${{item[2]}}
+                </li></a>
+                {% endfor %}
+            </ul>
+        </div>
+        {% if carrito%}
+        <ul>
+
+            <hr class='bg-info'>
+            {% for elemento in carrito %}
+                 <li class='text-info text-right pr-3'>
+                    {{elemento[0][0]}}  |  {{elemento[0][1]}}  |  ${{elemento[0][2]}}
+                  </li>
+            {% endfor %}
+            <hr class='bg-info'>
+            <li class='text-info text-right pr-3 '><h1><small class='text-white'>Total</small> ${{total}}</h1></li>
+        </ul>
+        <a id='confirm_order'  href="/confirmorder"><div class='bg-info w-100 text-center text-white'><h3 class='p-3'>Confirm</h3></div></a>
+        {% endif %}
+    </div>
+
+    {% endblock %}

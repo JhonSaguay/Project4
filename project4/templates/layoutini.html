@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html style="height:100%">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styleini.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <title>LUCY's Store</title>
+</head>
+<body>
+  <div class="sidenav">
+        <div class="login-main-text">
+             <img id='pizza_background' src="{{ url_for('static', filename='backg.jpg') }}" width="180%" height="130%">
+        </div>
+     </div>
+
+  <p id='logo' class='text-center m-0 weight-bold'><a href="#">Lucy's STORE</a></p>
+
+  <div id="center_cl" class='w-55  mx-auto  '>
+      {% block body%}
+      {% endblock %}
+  </div>
+
+
+
+</body>
+</html>

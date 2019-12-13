@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block body%}
+    <div id='my_orders_container' class='w-50 mx-auto'>
+        <div class=' text-left pr-3'>
+            <ul >
+                {% for row in All_orders%}
+                <li class='p-2' >
+                    <a href="{% url 'orders_manager' row.user row.order_number  %}"><span>Order no: {{row.order_number}} by {{row.user}}</span></a>
+                    <a href="{% url 'complete_order' row.user row.order_number  %}"><span class='float-right mx-2 p-1 bg-info rounded text-white'>Complete order</span></a>
+                    <span class='float-right'>Status: <span class='text-warning'>{{row.status}}</span></span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <ul>
+            <hr class='bg-info'>
+            {% for check_cat in Checkout_category %}
+                <li class='text-info text-right pr-3'>{{check_cat|cut:"("|cut:")"|cut:","|cut:"'"}}</li>
+                {% for row in Checkout %}
+                {% if row.category == check_cat|cut:"("|cut:")"|cut:","|cut:"'"  %}
+                <li class='pr-3 text-right'>{{row}}&nbsp;</li>
+                {% endif %}
+                {% endfor %}
+            {% endfor %}
+            <hr class='bg-info'>
+            <li class='text-info text-right pr-3 '><h1><small class='text-white'>Total</small> ${{Total|floatformat:2}}</h1></li>
+        </ul>
+    </div>
+
+{% endblock %}

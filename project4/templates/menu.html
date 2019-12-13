@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block body%}
+<div id='agregar' class='p-3'>
+    <table class='table-small w-50 mx-auto text-center '>
+        <caption style='caption-side:top;color:white;font-size: 30px;text-align: center'>{{Element}}</caption>
+
+        <thead class='thead-light'>
+            <tr >
+                <th>Codigo</th>
+                <th>Producto</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+              {% for row in productlist %}
+              <tr>
+                  <td>{{row[0]}}</td>
+                  <td>{{row[1]}}</td>
+                  <td>$ {{row[2]}} &nbsp;<a href="/carrito/{{row[0]}}" onclick="javascript:agregar();"><img class='plus' src="{{ url_for('static', filename='plus.png') }}"></a></td>
+              </tr>
+              {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+
+
+{% endblock %}
